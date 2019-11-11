@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Checkout site here: https://sharp-ritchie-28befd.netlify.com/ 
+
 
 ## Available Scripts
 
