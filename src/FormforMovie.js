@@ -8,8 +8,8 @@ export class FormforMovie extends Component {
 			poster: '',
 			comment: ''
 		};
-		// this.onChange = this.onChange.bind(this);
-		// this.submitForm = this.submitForm.bind(this);
+		this.onChange = this.onChange.bind(this);
+		this.submitForm = this.submitForm.bind(this);
 
 		const config = {
 			method: 'POST',
@@ -39,27 +39,44 @@ export class FormforMovie extends Component {
 			});
 	}
 
-	postInfo = e => {};
+	onChange(e) {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	}
+
+	submitForm(e) {
+		e.preventDefault();
+	}
 	render() {
 		return (
 			<div className="container">
-				<form onSubmit={this.postInfo} style={formStyle}>
+				<form onSubmit={this.submitForm} style={formStyle}>
+					<label htmlFor="title">Title:</label>
 					<input
 						type="text"
-						value={this.state.title}
 						placeholder="Name of the movie"
-						onChange={e => this.setState({ title: e.target.value })}
+						id="title"
+						name="title"
+						onChange={this.onChange}
+						value={this.state.title}
 					/>
+					<label htmlFor="poster">Poster:</label>
 					<input
 						type="url"
-						value={this.state.poster}
 						placeholder="poster to the poster"
-						onChange={e => this.setState({ poster: e.target.value })}
+						id="poster"
+						name="poster"
+						onChange={this.onChange}
+						value={this.state.poster}
 					/>
+					<label htmlFor="comment">Comment:</label>
 					<textarea
-						value={this.state.comment}
 						placeholder="Comments.."
-						onChange={e => this.setState({ comment: e.target.value })}
+						id="comment"
+						name="comment"
+						onChange={this.onChange}
+						value={this.state.comment}
 					></textarea>
 					<button type="submit" value="Submit">
 						Submit

@@ -10,11 +10,12 @@ export default function MovieForm() {
 		const config = {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
 			},
-			body: JSON.stringify(title, poster, comment)
+			body: JSON.stringify({ title, poster, comment })
 		};
-		const url = 'http://post-a-form.herokuapp.com/api/movies';
+		const url = 'https://post-a-form.herokuapp.com/api/movies';
 
 		fetch(url, config)
 			.then(res => res.json())
@@ -29,6 +30,8 @@ export default function MovieForm() {
 				console.error(e);
 				alert('Error in adding movie!');
 			});
+
+
 	}
 
 	return (
@@ -37,17 +40,24 @@ export default function MovieForm() {
 				<input
 					type="text"
 					placeholder="Name of the movie"
+					id="title"
+					name="title"
 					onChange={e => setTitle(e.target.value)}
 					value={title}
 				/>
 				<input
-					type="url"
-					placeholder="poster to the poster"
+					type="text"
+					placeholder="link for the poster"
+					id="poster"
+					name="poster"
 					onChange={e => setPoster(e.target.value)}
 					value={poster}
 				/>
 				<textarea
+					type="textarea"
 					placeholder="Comments.."
+					id="comment"
+					name="comment"
 					onChange={e => setComment(e.target.value)}
 					value={comment}
 				></textarea>
